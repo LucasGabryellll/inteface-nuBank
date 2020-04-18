@@ -39,7 +39,7 @@ export default function Tabs() {
 const styles = StyleSheet.create({
     container: {
         height: 100,
-        marginTop: 35,
+        marginTop: 40,
     },
 
     tabContainer: {
