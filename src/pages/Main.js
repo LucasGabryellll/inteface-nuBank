@@ -5,9 +5,27 @@ import Header from '../components/Header';
 import Tabs from '../components/Tabs';
 import Menu from '../components/Menu';
 
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { PanGestureHandler, State } from 'react-native-gesture-handler';
+import { View, Text, StyleSheet, ScrollView, Animated } from 'react-native';
 
 export default function Main() {
+    const translateY = new Animated.Value(0);
+
+    const animatedEvent = Animated.event(
+        [
+            {
+                nativeEvent: {
+                    translationY: translateY,
+                },
+            },
+        ],
+        { useNativeDriver: true },
+    );
+
+    function onHandlerStateChange(event) {
+
+    };
+
     return (
         <View style={styles.container}>
             <Header />
@@ -15,24 +33,42 @@ export default function Main() {
             <View style={styles.content}>
                 <Menu />
 
-                <View style={styles.card}>
-                    <View style={styles.cardHeader}>
-                        <Icon name="attach-money" size={30} color="#666" />
-                        <Icon name="visibility-off" size={30} color="#666" />
-                    </View>
+                <PanGestureHandler
+                    onGestureEvent={animatedEvent}
+                    onHandlerStateChange={onHandlerStateChange}
+                >
 
-                    <View style={styles.cardContent}>
-                        <Text style={styles.title}>Saldo disponível</Text>
-                        <Text style={styles.description}>R$ 179.265,65</Text>
-                    </View>
+                    <Animated.View style={[
+                        styles.card,
+                        {
+                            transform: [
+                                {
+                                    translateY: translateY.interpolate(
+                                        {
+                                            inputRange: [0, 380],
+                                            outputRange: [0, 380],
+                                            extrapolate: 'clamp',
+                                        }),
+                                }
+                            ]
+                        }]}>
+                        <View style={styles.cardHeader}>
+                            <Icon name="attach-money" size={30} color="#666" />
+                            <Icon name="visibility-off" size={30} color="#666" />
+                        </View>
 
-                    <View style={styles.cardFooter}>
-                        <Text style={styles.annotation}>
-                            Transferência de R$20,00 recebida de google.com hoje ás 06:00h
-                        </Text>
-                    </View>
+                        <View style={styles.cardContent}>
+                            <Text style={styles.title}>Saldo disponível</Text>
+                            <Text style={styles.description}>R$ 179.265,65</Text>
+                        </View>
 
-                </View>
+                        <View style={styles.cardFooter}>
+                            <Text style={styles.annotation}>
+                                Transferência de R$20,00 recebida de google.com hoje ás 06:00h
+                            </Text>
+                        </View>
+                    </Animated.View>
+                </PanGestureHandler>
             </View>
 
             <Tabs />
@@ -62,7 +98,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         left: 0,
         right: 0,
-        top: 0
+        top: 0,
     },
 
     cardHeader: {
@@ -92,7 +128,8 @@ const styles = StyleSheet.create({
     cardFooter: {
         padding: 30,
         backgroundColor: '#eee',
-        borderRadius: 4
+        borderRadius: 5,
+
     },
 
     annotation: {
