@@ -6,7 +6,7 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-nati
 
 export default function Menu() {
     return (
-        <ScrollView style={styles.container}>
+        <ScrollView style={styles.container} showsVerticalScrollIndicator={ false } >
             <View style={styles.code}>
                 <QRCode
                     content="https://nubank.com.br"
