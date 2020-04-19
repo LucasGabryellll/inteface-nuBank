@@ -2,11 +2,22 @@ import React from 'react';
 import Icon from '@expo/vector-icons/MaterialIcons';
 import { QRCode } from 'react-native-custom-qr-codes-expo';
 
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Animated } from 'react-native';
 
-export default function Menu() {
+export default function Menu({ translateY }) {
     return (
-        <ScrollView style={styles.container} showsVerticalScrollIndicator={ false } >
+        <Animated.ScrollView
+            style={[
+                styles.container,
+                {
+                    opacity: translateY.interpolate({
+                        inputRange: [0, 150],
+                        outputRange: [0, 1],
+                    }),
+                },
+            ]}
+            showsVerticalScrollIndicator={false}>
+
             <View style={styles.code}>
                 <QRCode
                     content="https://nubank.com.br"
@@ -38,22 +49,22 @@ export default function Menu() {
                 </View>
             </View>
 
-            <TouchableOpacity style={styles.singOutButton} onPress={() => {}} >
+            <TouchableOpacity style={styles.singOutButton} onPress={() => { }} >
                 <Text style={styles.singOutButtonText}>Sair do app</Text>
             </TouchableOpacity>
-        </ScrollView>
+        </Animated.ScrollView>
     );
 
 };
 
 const styles = StyleSheet.create({
     container: {
-        margin: 30
+        margin: 11
     },
 
     code: {
         backgroundColor: '#FFF',
-        padding: 8,
+        padding: 10,
         alignSelf: 'center'
     },
 
