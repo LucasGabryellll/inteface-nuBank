@@ -2,7 +2,9 @@
 
 interface do menu da nuBank com layout animado
 
-🚀 # Tecnologias Utiliziadas: 
+
+
+## 🚀 Tecnologias Utiliziadas: 
 
 - Expo 
 - React Native
