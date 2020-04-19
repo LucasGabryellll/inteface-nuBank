@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Icon from '@expo/vector-icons/MaterialIcons';
 import { QRCode } from 'react-native-custom-qr-codes-expo';
 
