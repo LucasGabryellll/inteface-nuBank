@@ -1,6 +1,6 @@
-#                                                          Interface nuBank
+<p alingn="center"> # Interface nuBank
 
-##                                            interface do menu da nuBank com layout animado
+## interface do menu da nuBank com layout animado
 
 
 <p align="center">
