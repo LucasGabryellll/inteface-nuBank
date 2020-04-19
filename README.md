@@ -1,5 +1,5 @@
 <p alingn="center">
-  <text alt ="GitHub language count" src= Interface nuBank >
+  <text alt ="GitHub language count" src= "Interface nuBank" >
 
 ## interface do menu da nuBank com layout animado
 
