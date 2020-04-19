@@ -1,11 +1,29 @@
 import React from 'react';
 import Icon from '@expo/vector-icons/MaterialIcons';
 
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Animated } from 'react-native';
 
-export default function Tabs() {
+export default function Tabs({ translateY }) {
     return (
-        <View style={styles.container}>
+        <Animated.View style={[styles.container,
+        {
+            transform: [{
+                translateY: translateY.interpolate({
+                    inputRange: [0, 380],
+                    outputRange: [0, 30],
+                    extrapolate: 'clamp',
+                }),
+            }],
+        },
+        {
+            opacity: translateY.interpolate({
+                inputRange: [0, 380],
+                outputRange: [1, 0.3],
+                extrapolate: 'clamp',
+            }),
+        },
+
+        ]}>
             <ScrollView contentContainerStyle={styles.tabContainer} horizontal={true} showsHorizontalScrollIndicator={false} >
                 <View style={styles.tabItem} >
                     <Icon name="person-add" size={20} color="#FFF" />
@@ -32,7 +50,7 @@ export default function Tabs() {
                     <Text style={styles.tabText}>Bloquear cartão</Text>
                 </View>
             </ScrollView>
-        </View>
+        </Animated.View>
     );
 };
 
