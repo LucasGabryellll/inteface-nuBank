@@ -1,4 +1,4 @@
-# <p alingn="center"> Interface nuBank
+# <text alingn="center"> Interface nuBank
 
 ## interface do menu da nuBank com layout animado
 
