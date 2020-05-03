@@ -9,7 +9,7 @@
 # Instalação da Expo-cli:
  - No prompt de comando digitar o comando: npm install expo-cli --global
 
-## Após instalado(Rodar no dispósitivel movel):
+## Após instalado(Para Rodar no dispósitivel movel):
  - Na Play Store baixar um plicativo chamado: expo
  - Na pastar do projeto digitar o comando: yarn start ou expo start
  - Ler o QR-code gerado pela aplicação com o aplicativo expo do celular
