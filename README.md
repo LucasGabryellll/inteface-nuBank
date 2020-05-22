@@ -15,7 +15,7 @@
  - Ler o QR-code gerado pela aplicação com o aplicativo expo do celular
 
 
-## 🚀 Tecnologias Utiliziadas: 
-
+## 🚀 Tecnologias:
+ Este projeto foi desenvolvido com as seguintes tecnologias:
 - Expo 
 - React Native
